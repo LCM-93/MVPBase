@@ -47,13 +47,14 @@ public abstract class BaseFragment extends RxFragment {
         super.onActivityCreated(savedInstanceState);
         mActivity = (BaseActivity) getActivity();
         mContext = getContext();
-
+        initView();
+        initData();
     }
 
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-       bind.unbind();
+        bind.unbind();
     }
 }
