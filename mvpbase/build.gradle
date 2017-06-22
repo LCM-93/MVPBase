@@ -61,7 +61,7 @@ dependencies {
         exclude module: 'support-annotations'
     }
     compile rootProject.ext.dependencies["annotations"]
-
+    compile rootProject.ext.dependencies["constraint-layout"]
 
 
     //view
