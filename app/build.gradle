@@ -15,6 +15,16 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
 
+        /**
+         * ARouter 必须配置
+         */
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+
     }
     buildTypes {
         release {
@@ -44,12 +54,12 @@ dependencies {
 //tools
     provided rootProject.ext.dependencies["javax.annotation"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
-    //view
+
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     compile rootProject.ext.dependencies["paginate"]
-    //arms
+
     compile project(':mvpbase')
-//    compile 'me.jessyan:arms:2.0.2'
     //test
     testCompile rootProject.ext.dependencies["junit"]
     debugCompile rootProject.ext.dependencies["canary-debug"]
