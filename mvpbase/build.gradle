@@ -3,6 +3,7 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     useLibrary 'org.apache.http.legacy'
+    publishNonDefault true
 
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
@@ -36,20 +37,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    publishNonDefault true
+
 }
 
-
-
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-    }
-}
 
 
 dependencies {
@@ -79,6 +69,7 @@ dependencies {
     api (rootProject.ext.dependencies["butterknife"]){
         exclude module: 'support-annotations'
     }
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     //Arouter
     api rootProject.ext.dependencies['arouter']
@@ -135,7 +126,7 @@ dependencies {
 
     //test
     api rootProject.ext.dependencies["timber"]
-    api rootProject.ext.dependencies["utils"]
+    api rootProject.ext.dependencies["utils"]  //https://blankj.com/2016/07/31/android-utils-code/
     api rootProject.ext.dependencies["retrofit-logging"]
     testImplementation rootProject.ext.dependencies["junit"]
     api (rootProject.ext.dependencies["rxbinding"]){
