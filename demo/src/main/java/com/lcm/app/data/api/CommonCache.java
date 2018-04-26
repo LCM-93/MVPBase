@@ -23,6 +23,6 @@ import io.rx_cache2.Reply;
 public interface CommonCache {
 
     @LifeCache(duration = 5, timeUnit = TimeUnit.MINUTES)
-    Observable<Reply<HttpBaseResult<List<String>>>> getHistoryDateList(Observable<HttpBaseResult<List<String>>> oRepos, EvictDynamicKey evictDynamicKey);
+    Observable<Reply<HttpBaseResult<List<String>>>> getHistoryDateList(Observable<HttpBaseResult<List<String>>> oRepos,EvictProvider evictProvider);
 
 }

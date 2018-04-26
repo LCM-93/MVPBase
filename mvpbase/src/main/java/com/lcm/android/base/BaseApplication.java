@@ -32,7 +32,7 @@ public abstract class BaseApplication extends Application {
         super.onCreate();
         mApplication = this;
         mClientModule = ClientModule
-                .buidler()
+                .builder()
                 .baseurl(BuildConfig.BaseUrl)
                 .globeHttpHandler(getHttpHandler())
                 .interceptors(getInterceptors())

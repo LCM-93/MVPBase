@@ -9,7 +9,8 @@ import okhttp3.Response;
  * Contact with jess.yan.effort@gmail.com
  */
 public interface GlobeHttpHandler {
-    Response onHttpResultResponse(String httpResult, Interceptor.Chain chain, Response response);
 
     Request onHttpRequestBefore(Interceptor.Chain chain, Request request);
+
+    Response onHttpResultResponse(String httpResult, Interceptor.Chain chain, Response response);
 }

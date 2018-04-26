@@ -15,6 +15,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.rx_cache2.EvictDynamicKey;
+import io.rx_cache2.EvictProvider;
 
 /**
  * ****************************************************************
@@ -32,7 +33,7 @@ public class MainModel extends BaseModel<ApiManager, CacheManager> {
     }
 
     public Observable<HttpBaseResult<List<String>>> load() {
-        return mCacheManager.getCommonCache().getHistoryDateList(mServiceManager.getCommonApi().getHistoryDateList(),new EvictDynamicKey(NetworkUtils.isConnected()))
+        return mCacheManager.getCommonCache().getHistoryDateList(mServiceManager.getCommonApi().getHistoryDateList(),new EvictProvider(NetworkUtils.isConnected()))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(httpBaseResultReply -> {

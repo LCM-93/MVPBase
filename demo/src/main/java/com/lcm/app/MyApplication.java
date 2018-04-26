@@ -1,10 +1,12 @@
 package com.lcm.app;
 
 import com.lcm.android.base.BaseApplication;
+import com.lcm.android.http.GlobeHttpHandler;
 import com.lcm.app.dagger.component.AppComponent;
 import com.lcm.app.dagger.component.DaggerAppComponent;
 import com.lcm.app.dagger.module.CacheModule;
 import com.lcm.app.dagger.module.ServiceModule;
+import com.lcm.app.data.http.MyHttpHandler;
 
 /**
  * ****************************************************************
@@ -38,5 +40,8 @@ public class MyApplication extends BaseApplication{
         return mAppComponent;
     }
 
-
+//    @Override
+//    protected GlobeHttpHandler getHttpHandler() {
+//        return new MyHttpHandler();
+//    }
 }
