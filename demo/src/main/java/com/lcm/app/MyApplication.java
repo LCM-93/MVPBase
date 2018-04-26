@@ -3,6 +3,7 @@ package com.lcm.app;
 import com.lcm.android.base.BaseApplication;
 import com.lcm.app.dagger.component.AppComponent;
 import com.lcm.app.dagger.component.DaggerAppComponent;
+import com.lcm.app.dagger.module.DBModule;
 import com.lcm.app.dagger.module.DataModule;
 import com.lcm.app.data.http.MyHttpHandler;
 
@@ -24,6 +25,7 @@ public class MyApplication extends BaseApplication{
                 .appModule(getAppModule())
                 .clientModule(getClientModule())
                 .dataModule(new DataModule())
+                .dBModule(new DBModule())
 //                .serviceModule(new ServiceModule())
 //                .cacheModule(new CacheModule())
                 .build();

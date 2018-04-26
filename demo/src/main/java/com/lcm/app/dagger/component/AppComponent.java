@@ -5,12 +5,14 @@ import android.app.Application;
 import com.lcm.android.dagger.module.AppModule;
 import com.lcm.android.dagger.module.ClientModule;
 import com.lcm.app.dagger.module.CacheModule;
+import com.lcm.app.dagger.module.DBModule;
 import com.lcm.app.dagger.module.DataModule;
 import com.lcm.app.dagger.module.ServiceModule;
 import com.lcm.app.data.api.ApiManager;
 import com.lcm.app.data.api.CacheManager;
 import com.lcm.app.data.api.CommonApi;
 import com.lcm.app.data.api.DataManager;
+import com.lcm.app.data.db.DBManager;
 
 import javax.inject.Singleton;
 
@@ -24,7 +26,7 @@ import dagger.Component;
  * *****************************************************************
  */
 @Singleton
-@Component(modules = {AppModule.class, ClientModule.class, DataModule.class})
+@Component(modules = {AppModule.class, ClientModule.class, DataModule.class, DBModule.class})
 public interface AppComponent {
 
 
@@ -36,6 +38,8 @@ public interface AppComponent {
 //    CacheManager cacheManager();
 
     DataManager dataManager();
+
+    DBManager  dbManager();
 
 
 }

@@ -21,6 +21,10 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     TextView tv;
     @BindView(R.id.btn)
     Button btn;
+    @BindView(R.id.btn2)
+    Button btn2;
+    @BindView(R.id.btn3)
+    Button btn3;
 
 
     @Override
@@ -39,6 +43,12 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         RxView.clicks(btn)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe(o -> mPresenter.load());
+
+        RxView.clicks(btn2)
+                .subscribe(o -> mPresenter.getSplash());
+
+        RxView.clicks(btn3)
+                .subscribe(o -> mPresenter.readDb());
     }
 
 

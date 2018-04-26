@@ -6,7 +6,9 @@ import com.lcm.android.mvp.BaseModel;
 import com.lcm.app.data.api.ApiManager;
 import com.lcm.app.data.api.CacheManager;
 import com.lcm.app.data.api.DataManager;
+import com.lcm.app.data.db.DBManager;
 import com.lcm.app.data.entity.HttpBaseResult;
+import com.lcm.app.data.entity.WelfareBean;
 
 import java.util.List;
 
@@ -41,5 +43,11 @@ public class MainModel extends BaseModel<DataManager> {
                     LogUtils.e(httpBaseResultReply.getSource());
                     return httpBaseResultReply.getData();
                 });
+    }
+
+    public Observable<HttpBaseResult<List<WelfareBean>>>  getSplah(){
+        return mDataManager.getCommonApi().getSplash()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

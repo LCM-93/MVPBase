@@ -4,6 +4,7 @@ package com.lcm.app.data.api;
 
 
 import com.lcm.app.data.entity.HttpBaseResult;
+import com.lcm.app.data.entity.WelfareBean;
 
 import java.util.List;
 
@@ -23,4 +24,9 @@ public interface CommonApi {
     Observable<HttpBaseResult<List<String>>> getHistoryDateList();
 
 
+    /**
+     * @return
+     */
+    @GET("random/data/福利/2")
+    Observable<HttpBaseResult<List<WelfareBean>>> getSplash();
 }

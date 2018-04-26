@@ -1,12 +1,19 @@
 package com.lcm.app.main;
 
 import com.lcm.android.mvp.BaseMvpPresenter;
+import com.lcm.app.data.api.DataManager;
+import com.lcm.app.data.db.DBManager;
+import com.lcm.app.data.entity.WelfareBean;
 import com.lcm.app.weight.ProgressObserver;
 import com.lcm.app.data.entity.HttpBaseResult;
+
+import org.greenrobot.greendao.query.Query;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -23,11 +30,14 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
     MainModel mainModel;
 
     @Inject
+    DBManager dbManager;
+
+    @Inject
     public MainPresenter() {
 
     }
 
-    public void load(){
+    public void load() {
 //        mainModel.load()
 ////                .subscribe(new Consumer<HttpBaseResult<List<String>>>() {
 ////                    @Override
@@ -46,8 +56,8 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
 ////                    }
 ////                });
 
-      mainModel.load()
-                .subscribe(new ProgressObserver<HttpBaseResult<List<String>>>(getMvpView().getActivityContext()){
+        mainModel.load()
+                .subscribe(new ProgressObserver<HttpBaseResult<List<String>>>(getMvpView().getActivityContext()) {
                     @Override
                     public void onNext(HttpBaseResult<List<String>> listHttpBaseResult) {
                         super.onNext(listHttpBaseResult);
@@ -55,5 +65,28 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
                     }
                 });
 
+    }
+
+
+    public void getSplash() {
+        mainModel.getSplah()
+                .subscribe(new Consumer<HttpBaseResult<List<WelfareBean>>>() {
+                    @Override
+                    public void accept(HttpBaseResult<List<WelfareBean>> listHttpBaseResult) throws Exception {
+                        List<WelfareBean> results = listHttpBaseResult.getResults();
+                        getMvpView().onLoadSuccess("网络下载数据：："+results.toString());
+                        for (WelfareBean w :
+                                results) {
+                            dbManager.getWelfareBeanDao().insert(w);
+                        }
+                    }
+                });
+    }
+
+
+    public void readDb() {
+        Query<WelfareBean> build = dbManager.getWelfareBeanDao().queryBuilder().build();
+        List<WelfareBean> list = build.list();
+        getMvpView().onLoadSuccess("从数据库中读取：："+list.toString());
     }
 }
