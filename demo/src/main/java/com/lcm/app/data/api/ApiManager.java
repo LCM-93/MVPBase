@@ -15,19 +15,19 @@ import javax.inject.Singleton;
 
 @Singleton
 public class  ApiManager extends BaseServiceManager {
-    private CommonApi mCommonService;
+    private CommonApi mCommonApi;
 
     /**
      * 如果需要添加service只需在构造方法中添加对应的service,在提供get方法返回出去,只要在ServiceModule提供了该service
      * Dagger2会自行注入
-     * @param commonService
+     * @param commonApi
      */
     @Inject
-    public ApiManager(CommonApi commonService){
-        this.mCommonService = commonService;
+    public ApiManager(CommonApi commonApi){
+        this.mCommonApi = commonApi;
     }
 
-    public CommonApi getCommonService() {
-        return mCommonService;
+    public CommonApi getCommonApi() {
+        return mCommonApi;
     }
 }

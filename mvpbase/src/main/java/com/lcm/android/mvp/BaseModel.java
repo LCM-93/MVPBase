@@ -12,22 +12,22 @@ import com.lcm.android.http.BaseServiceManager;
  */
 
 public class BaseModel<S extends BaseServiceManager,C extends BaseCacheManager> {
-    protected S baseServiceManager;
-    protected C baseCacheManager;
+    protected S mServiceManager;
+    protected C mCacheManager;
 
     public BaseModel(S serviceManager,C cacheManager){
-        this.baseCacheManager = cacheManager;
-        this.baseServiceManager = serviceManager;
+        this.mCacheManager = cacheManager;
+        this.mServiceManager = serviceManager;
     }
 
     public BaseModel(S serviceManger){
-        this.baseServiceManager = serviceManger;
+        this.mServiceManager = serviceManger;
     }
 
 
     public void onDestory(){
-        this.baseServiceManager = null;
-        this.baseCacheManager = null;
+        this.mServiceManager = null;
+        this.mCacheManager = null;
     }
 
 }

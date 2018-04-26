@@ -28,12 +28,12 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField 'String','BaseUrl','"http://api.link-pay.cn/"'
+            buildConfigField 'String','BaseUrl','"http://gank.io/api/"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
-            buildConfigField 'String','BaseUrl','"http://api.link-pay.cn/"'
+            buildConfigField 'String','BaseUrl','"http://gank.io/api/"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

@@ -3,6 +3,7 @@ package com.lcm.android.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.blankj.utilcode.util.Utils;
 import com.lcm.android.BuildConfig;
 import com.lcm.android.dagger.module.AppModule;
 import com.lcm.android.dagger.module.ClientModule;
@@ -38,18 +39,18 @@ public abstract class BaseApplication extends Application {
                 .build();
 
         mAppModule = new AppModule(this);
+        Utils.init(this);
     }
 
 
     /**
      * 返回上下文
+     *
      * @return
      */
     public static Context getContext() {
         return mApplication;
     }
-
-
 
 
     public ClientModule getClientModule() {

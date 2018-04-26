@@ -22,7 +22,7 @@ public class CacheManager extends BaseCacheManager {
         this.commonCache = commonCache;
     }
 
-    public CommonCache getCacheAp(){
+    public CommonCache getCommonCache(){
         return commonCache;
     }
 }

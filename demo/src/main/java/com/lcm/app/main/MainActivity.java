@@ -8,7 +8,6 @@ import com.lcm.app.R;
 import com.lcm.app.base.MvpActivity;
 import com.lcm.app.dagger.component.AppComponent;
 import com.lcm.app.dagger.component.DaggerRepoComponent;
-import com.lcm.app.data.entity.BannerBean;
 
 import java.util.concurrent.TimeUnit;
 
@@ -58,7 +57,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     }
 
     @Override
-    public void onLoadSuccess(BannerBean bannerBean) {
-        tv.setText(bannerBean.toString());
+    public void onLoadSuccess(String str) {
+        tv.setText(str);
     }
 }

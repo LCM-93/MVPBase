@@ -1,61 +1,38 @@
 package com.lcm.app.data.entity;
 
 /**
- * Created by hunji on 2016/9/1.
- * desc:
+ * ****************************************************************
+ * Author: LCM
+ * Date: 2017/6/9 下午5:48
+ * Desc:
+ * *****************************************************************
  */
 public class HttpBaseResult<T> {
 
-    /**
-     * server_time : 1477284985
-     * success : true
-     * message :
-     * data :
-     */
+    private boolean error;
+    private T results;
 
-    private int server_time;
-    private boolean success;
-    private String message;
-    private T data;
-    private String error_code;
-
-    public String getError_code() {
-        return error_code;
+    @Override
+    public String toString() {
+        return "HttpBaseResult{" +
+                "error=" + error +
+                ", results=" + results +
+                '}';
     }
 
-    public void setError_code(String error_code) {
-        this.error_code = error_code;
+    public boolean isError() {
+        return error;
     }
 
-    public int getServer_time() {
-        return server_time;
+    public void setError(boolean error) {
+        this.error = error;
     }
 
-    public void setServer_time(int server_time) {
-        this.server_time = server_time;
+    public T getResults() {
+        return results;
     }
 
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
+    public void setResults(T results) {
+        this.results = results;
     }
 }

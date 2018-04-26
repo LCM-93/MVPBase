@@ -1,9 +1,7 @@
 package com.lcm.app.main;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.lcm.android.mvp.BaseMvpPresenter;
 import com.lcm.app.weight.ProgressObserver;
-import com.lcm.app.data.entity.BannerBean;
 import com.lcm.app.data.entity.HttpBaseResult;
 
 import java.util.List;
@@ -30,13 +28,30 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
     }
 
     public void load(){
+//        mainModel.load()
+////                .subscribe(new Consumer<HttpBaseResult<List<String>>>() {
+////                    @Override
+////                    public void accept(HttpBaseResult<List<String>> listHttpBaseResult) throws Exception {
+////                        LogUtils.eTag("LCM", listHttpBaseResult.getResults());
+////                    }
+////                }, new Consumer<Throwable>() {
+////                    @Override
+////                    public void accept(Throwable throwable) throws Exception {
+////                        LogUtils.eTag("LCM", throwable.getMessage());
+////                    }
+////                }, new Action() {
+////                    @Override
+////                    public void run() throws Exception {
+////                        LogUtils.eTag("LCM", "complete");
+////                    }
+////                });
+
       mainModel.load()
-                .subscribe(new ProgressObserver<HttpBaseResult<List<BannerBean>>>(getMvpView().getActivityContext()){
+                .subscribe(new ProgressObserver<HttpBaseResult<List<String>>>(getMvpView().getActivityContext()){
                     @Override
-                    public void onNext(HttpBaseResult<List<BannerBean>> listHttpBaseResult) {
+                    public void onNext(HttpBaseResult<List<String>> listHttpBaseResult) {
                         super.onNext(listHttpBaseResult);
-                        LogUtils.eTag("LCM",listHttpBaseResult.getData().get(0).toString());
-                        getMvpView().onLoadSuccess(listHttpBaseResult.getData().get(0));
+                        getMvpView().onLoadSuccess(listHttpBaseResult.getResults().toString());
                     }
                 });
 
