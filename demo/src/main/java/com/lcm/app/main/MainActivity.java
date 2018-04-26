@@ -7,7 +7,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.lcm.app.R;
 import com.lcm.app.base.MvpActivity;
 import com.lcm.app.dagger.component.AppComponent;
-import com.lcm.app.dagger.component.DaggerRepoComponent;
+import com.lcm.app.dagger.component.DaggerActivityComponent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +50,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
-        DaggerRepoComponent.builder()
+        DaggerActivityComponent.builder()
                 .appComponent(appComponent)
                 .build()
                 .inject(this);

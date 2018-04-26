@@ -1,7 +1,6 @@
 package com.lcm.android.mvp;
 
-import com.lcm.android.http.BaseCacheManager;
-import com.lcm.android.http.BaseServiceManager;
+import com.lcm.android.http.BaseDataManager;
 
 /**
  * ****************************************************************
@@ -11,23 +10,37 @@ import com.lcm.android.http.BaseServiceManager;
  * *****************************************************************
  */
 
-public class BaseModel<S extends BaseServiceManager,C extends BaseCacheManager> {
-    protected S mServiceManager;
-    protected C mCacheManager;
 
-    public BaseModel(S serviceManager,C cacheManager){
-        this.mCacheManager = cacheManager;
-        this.mServiceManager = serviceManager;
+public class BaseModel<D extends BaseDataManager> {
+    protected D mDataManager;
+
+    public BaseModel(D mDataManager){
+        this.mDataManager = mDataManager;
     }
-
-    public BaseModel(S serviceManger){
-        this.mServiceManager = serviceManger;
-    }
-
 
     public void onDestory(){
-        this.mServiceManager = null;
-        this.mCacheManager = null;
+        this.mDataManager = null;
     }
 
 }
+
+//public class BaseModel<S extends BaseServiceManager,C extends BaseCacheManager> {
+//    protected S mServiceManager;
+//    protected C mCacheManager;
+//
+//    public BaseModel(S serviceManager,C cacheManager){
+//        this.mCacheManager = cacheManager;
+//        this.mServiceManager = serviceManager;
+//    }
+//
+//    public BaseModel(S serviceManger){
+//        this.mServiceManager = serviceManger;
+//    }
+//
+//
+//    public void onDestory(){
+//        this.mServiceManager = null;
+//        this.mCacheManager = null;
+//    }
+//
+//}

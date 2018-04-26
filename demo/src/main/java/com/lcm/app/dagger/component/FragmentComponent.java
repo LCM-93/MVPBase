@@ -1,20 +1,18 @@
 package com.lcm.app.dagger.component;
 
-import com.lcm.android.dagger.scope.ActivityScope;
-import com.lcm.app.main.MainActivity;
+import com.lcm.android.dagger.scope.FragmentScope;
 
 import dagger.Component;
 
 /**
  * ****************************************************************
  * Author: LCM
- * Date: 2017/5/23 下午1:59
+ * Date: 2018/4/26 19:24
  * Desc:
  * *****************************************************************
  */
-@ActivityScope
+@FragmentScope
 @Component(dependencies = AppComponent.class)
-public interface RepoComponent {
+public interface FragmentComponent {
 
-    void inject(MainActivity mainActivity);
 }

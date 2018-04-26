@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.NetworkUtils;
 import com.lcm.android.mvp.BaseModel;
 import com.lcm.app.data.api.ApiManager;
 import com.lcm.app.data.api.CacheManager;
+import com.lcm.app.data.api.DataManager;
 import com.lcm.app.data.entity.HttpBaseResult;
 
 import java.util.List;
@@ -25,15 +26,15 @@ import io.rx_cache2.EvictProvider;
  * *****************************************************************
  */
 
-public class MainModel extends BaseModel<ApiManager, CacheManager> {
+public class MainModel extends BaseModel<DataManager> {
 
     @Inject
-    public MainModel(ApiManager serviceManager, CacheManager cacheManager) {
-        super(serviceManager, cacheManager);
+    public MainModel(DataManager dataManager) {
+        super(dataManager);
     }
 
     public Observable<HttpBaseResult<List<String>>> load() {
-        return mCacheManager.getCommonCache().getHistoryDateList(mServiceManager.getCommonApi().getHistoryDateList(),new EvictProvider(NetworkUtils.isConnected()))
+        return  mDataManager.getCommonCache().getHistoryDateList(mDataManager.getCommonApi().getHistoryDateList(),new EvictProvider(NetworkUtils.isConnected()))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(httpBaseResultReply -> {

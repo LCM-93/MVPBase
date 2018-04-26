@@ -101,7 +101,8 @@ ext {
 
 
 
-            "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1"
+            "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1",
+            "greendao"                 : "org.greenrobot:greendao:3.2.0"
     ]
 
 
