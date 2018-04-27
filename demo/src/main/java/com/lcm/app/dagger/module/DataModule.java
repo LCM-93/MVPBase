@@ -1,7 +1,10 @@
 package com.lcm.app.dagger.module;
 
+import android.app.Application;
+
 import com.lcm.app.data.api.CommonApi;
 import com.lcm.app.data.api.CommonCache;
+import com.lcm.app.data.db.DBManager;
 
 import javax.inject.Singleton;
 
@@ -30,5 +33,12 @@ public class DataModule {
     @Provides
     CommonCache provideCommonCache(RxCache rxCache) {
         return rxCache.using(CommonCache.class);
+    }
+
+
+    @Singleton
+    @Provides
+    DBManager provideDBManager(Application application){
+        return new DBManager(application);
     }
 }

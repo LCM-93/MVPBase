@@ -25,7 +25,7 @@ public class MyApplication extends BaseApplication{
                 .appModule(getAppModule())
                 .clientModule(getClientModule())
                 .dataModule(new DataModule())
-                .dBModule(new DBModule())
+//                .dBModule(new DBModule())
 //                .serviceModule(new ServiceModule())
 //                .cacheModule(new CacheModule())
                 .build();

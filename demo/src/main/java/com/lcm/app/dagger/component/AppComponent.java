@@ -26,7 +26,7 @@ import dagger.Component;
  * *****************************************************************
  */
 @Singleton
-@Component(modules = {AppModule.class, ClientModule.class, DataModule.class, DBModule.class})
+@Component(modules = {AppModule.class, ClientModule.class, DataModule.class})
 public interface AppComponent {
 
 

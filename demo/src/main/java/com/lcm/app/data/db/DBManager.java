@@ -3,10 +3,13 @@ package com.lcm.app.data.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.greedao.dao.DaoMaster;
 import com.greedao.dao.DaoSession;
 import com.greedao.dao.WelfareBeanDao;
 import com.lcm.app.BuildConfig;
+
+import org.greenrobot.greendao.database.Database;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -24,7 +27,7 @@ public class DBManager {
     private DaoSession mDaoSession;
     private final String DBName = BuildConfig.DB_Name;
     private DaoMaster.DevOpenHelper devOpenHelper;
-    private SQLiteDatabase db;
+    private Database db;
     private Context context;
     private WelfareBeanDao welfareBeanDao;
 
@@ -35,7 +38,7 @@ public class DBManager {
 
     private void setDatabase() {
         devOpenHelper = new DaoMaster.DevOpenHelper(context, DBName, null);
-        db = devOpenHelper.getWritableDatabase();
+        db = devOpenHelper.getWritableDb();
         mDaoMaster = new DaoMaster(db);
         mDaoSession = mDaoMaster.newSession();
     }
