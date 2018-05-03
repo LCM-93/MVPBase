@@ -16,7 +16,7 @@ import java.io.ObjectOutputStream;
 /**
  * Created by zhiyicx on 2016/3/15.
  */
-public class SPHelper {
+public class SPHelperJava {
     private static SharedPreferences mSharedPreferences;
     public static final String SP_NAME = "SP_CONFIG";
 

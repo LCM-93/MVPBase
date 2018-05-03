@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     useLibrary 'org.apache.http.legacy'
@@ -133,5 +136,9 @@ dependencies {
         exclude module: 'support-annotations'
     }
     api rootProject.ext.dependencies["greendao"]
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+}
+repositories {
+    mavenCentral()
 }
