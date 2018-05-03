@@ -66,13 +66,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             mApplication.getActivityList().add(this);
         }
 
+        initView();
+        initData();
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        initView();
-        initData();
     }
 
     protected abstract int rootView();
