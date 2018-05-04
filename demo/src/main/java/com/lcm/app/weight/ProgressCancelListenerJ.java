@@ -1,5 +1,5 @@
 package com.lcm.app.weight;
 
-public interface ProgressCancelListener {
+public interface ProgressCancelListenerJ {
     void onCancelProgress();
 }

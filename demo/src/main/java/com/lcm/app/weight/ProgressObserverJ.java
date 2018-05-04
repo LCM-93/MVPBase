@@ -17,26 +17,26 @@ import io.reactivex.disposables.Disposable;
  * *****************************************************************
  */
 
-public class ProgressObserver<T> implements Observer<T>, ProgressCancelListener {
+public class ProgressObserverJ<T> implements Observer<T>, ProgressCancelListener {
 
     private ProgressDialogHandler mProgressDialogHandler;
 
     private Context context;
 
-    public ProgressObserver(Context context) {
+    public ProgressObserverJ(Context context) {
         this.context = context;
         mProgressDialogHandler = new ProgressDialogHandler(context, this, true, true);
     }
 
     private void showProgressDialog() {
         if (mProgressDialogHandler != null) {
-            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
+            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.Companion.getSHOW_PROGRESS_DIALOG()).sendToTarget();
         }
     }
 
     private void dismissProgressDialog() {
         if (mProgressDialogHandler != null) {
-            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
+            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.Companion.getDISMISS_PROGRESS_DIALOG()).sendToTarget();
             mProgressDialogHandler = null;
         }
     }

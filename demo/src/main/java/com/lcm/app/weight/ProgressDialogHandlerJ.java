@@ -6,7 +6,7 @@ import android.os.Message;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-public class ProgressDialogHandler extends Handler {
+public class ProgressDialogHandlerJ extends Handler {
 
     public static final int SHOW_PROGRESS_DIALOG = 1;
     public static final int DISMISS_PROGRESS_DIALOG = 2;
@@ -18,8 +18,8 @@ public class ProgressDialogHandler extends Handler {
     private boolean show;
     private ProgressCancelListener mProgressCancelListener;
 
-    public ProgressDialogHandler(Context context, ProgressCancelListener mProgressCancelListener,
-                                 boolean cancelable, boolean show) {
+    public ProgressDialogHandlerJ(Context context, ProgressCancelListener mProgressCancelListener,
+                                  boolean cancelable, boolean show) {
         super();
         this.context = context;
         this.mProgressCancelListener = mProgressCancelListener;

@@ -1,7 +1,6 @@
 package com.lcm.app.main;
 
 import com.lcm.android.mvp.BaseMvpPresenter;
-import com.lcm.app.data.api.DataManager;
 import com.lcm.app.data.db.DBManager;
 import com.lcm.app.data.entity.WelfareBean;
 import com.lcm.app.weight.ProgressObserver;
