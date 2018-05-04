@@ -1,6 +1,9 @@
 package com.lcm.app.main;
 
 
+
+import android.content.Context;
+
 import com.lcm.android.mvp.BaseView;
 
 /**
@@ -14,4 +17,7 @@ import com.lcm.android.mvp.BaseView;
 public interface MainView extends BaseView {
 
     void onLoadSuccess(String str);
+
+    Context getContext();
+
 }

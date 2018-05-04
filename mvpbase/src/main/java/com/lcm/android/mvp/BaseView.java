@@ -1,6 +1,5 @@
 package com.lcm.android.mvp;
 
-import android.content.Context;
 
 /**
  * ****************************************************************
@@ -11,11 +10,6 @@ import android.content.Context;
  */
 
 public interface BaseView {
-    Context getActivityContext();
-
-    void showMessage(String str);
-
-    void showEmpty();
 
     void finishView();
 }
