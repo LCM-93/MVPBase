@@ -109,8 +109,9 @@ object ZipHelper {
         try {
             os = ByteArrayOutputStream(string.length)
             gos = GZIPOutputStream(os)
-            gos?.write(string.toByteArray(Charset.forName("UTF-8")))
-            return os?.toByteArray()
+            if(gos==null) return null
+            gos.write(string.toByteArray(Charset.forName("UTF-8")))
+            return os.toByteArray()
         } catch (e: IOException) {
             e.printStackTrace()
         } finally {

@@ -7,7 +7,6 @@ import com.lcm.app.data.entity.WelfareBean;
 import com.lcm.app.weight.ProgressObserver;
 import com.lcm.app.data.entity.HttpBaseResult;
 
-import org.greenrobot.greendao.query.Query;
 
 import java.util.List;
 
@@ -77,7 +76,7 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
                         getMvpView().onLoadSuccess("网络下载数据：："+results.toString());
                         for (WelfareBean w :
                                 results) {
-                            dbManager.getWelfareBeanDao().insert(w);
+//                            dbManager.getWelfareBeanDao().insert(w);
                         }
                     }
                 });
@@ -85,8 +84,8 @@ public class MainPresenter extends BaseMvpPresenter<MainView> {
 
 
     public void readDb() {
-        Query<WelfareBean> build = dbManager.getWelfareBeanDao().queryBuilder().build();
-        List<WelfareBean> list = build.list();
-        getMvpView().onLoadSuccess("从数据库中读取：："+list.toString());
+//        Query<WelfareBean> build = dbManager.getWelfareBeanDao().queryBuilder().build();
+//        List<WelfareBean> list = build.list();
+//        getMvpView().onLoadSuccess("从数据库中读取：："+list.toString());
     }
 }

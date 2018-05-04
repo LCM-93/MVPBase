@@ -84,24 +84,24 @@ object SPHelper {
     /**
      * 将对象从sharepreference中取出来
      */
-    @JvmStatic fun <T> getDeviceData(context: Context,key: String):T?{
-        if (mSharedPreferences == null) {
-            mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
-        }
-        var device: T?=null
-        var productBase64:String? = mSharedPreferences?.getString(key,null)
-        if(productBase64 == null) return null
-
-        var base64 = Base64.decode(productBase64.toByteArray(),Base64.DEFAULT)
-        var bais = ByteArrayInputStream(base64)
-        try {
-            var bis = ObjectInputStream(bais)
-            device = bis.readObject() as T?
-        }catch (e: Exception){
-            e.printStackTrace()
-        }
-        return device
-    }
+//    @JvmStatic fun <T> getDeviceData(context: Context,key: String):T?{
+//        if (mSharedPreferences == null) {
+//            mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
+//        }
+//        var device: T?=null
+//        var productBase64:String? = mSharedPreferences?.getString(key,null)
+//        if(productBase64 == null) return null
+//
+//        var base64 = Base64.decode(productBase64.toByteArray(),Base64.DEFAULT)
+//        var bais = ByteArrayInputStream(base64)
+//        try {
+//            var bis = ObjectInputStream(bais)
+//            device = bis.readObject() as T?
+//        }catch (e: Exception){
+//            e.printStackTrace()
+//        }
+//        return device
+//    }
 
 
     /**
@@ -119,9 +119,9 @@ object SPHelper {
     @JvmStatic fun getCacheFile(context: Context):File{
         if (context.cacheDir==null || Environment.getExternalStorageState() == null||Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
             var file:File = context.externalCacheDir
-            if (file == null){
-                file = File(getCacheFilePath(context))
-            }
+//            if (file == null){
+//                file = File(getCacheFilePath(context))
+//            }
             return file
         }else{
             return context.cacheDir
