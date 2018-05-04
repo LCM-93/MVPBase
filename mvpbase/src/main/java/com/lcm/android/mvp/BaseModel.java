@@ -24,23 +24,3 @@ public class BaseModel<D extends BaseDataManager> {
 
 }
 
-//public class BaseModel<S extends BaseServiceManager,C extends BaseCacheManager> {
-//    protected S mServiceManager;
-//    protected C mCacheManager;
-//
-//    public BaseModel(S serviceManager,C cacheManager){
-//        this.mCacheManager = cacheManager;
-//        this.mServiceManager = serviceManager;
-//    }
-//
-//    public BaseModel(S serviceManger){
-//        this.mServiceManager = serviceManger;
-//    }
-//
-//
-//    public void onDestory(){
-//        this.mServiceManager = null;
-//        this.mCacheManager = null;
-//    }
-//
-//}

@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -53,6 +52,9 @@ android {
 //    }
 }
 
+kapt {
+    generateStubs = true
+}
 
 
 dependencies {
@@ -67,8 +69,9 @@ dependencies {
 
     //tools
     compileOnly rootProject.ext.dependencies["javax.annotation"]
-    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation 'com.google.dagger:dagger-android-support:2.12'
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
+    kapt rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
 

@@ -11,7 +11,7 @@
         android:label="${mf_appName}"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.lcm.app.MyApplicationJ">
+        android:name="com.lcm.app.MyApplication">
         <activity android:name="com.lcm.app.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

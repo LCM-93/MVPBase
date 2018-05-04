@@ -1,10 +1,9 @@
-package com.lcm.app.main;
+package com.lcm.app.main
 
 
+import android.content.Context
 
-import android.content.Context;
-
-import com.lcm.android.mvp.BaseView;
+import com.lcm.android.mvp.BaseView
 
 /**
  * ****************************************************************
@@ -14,10 +13,10 @@ import com.lcm.android.mvp.BaseView;
  * *****************************************************************
  */
 
-public interface MainView extends BaseView {
+interface MainView : BaseView {
 
-    void onLoadSuccess(String str);
+    fun getContext(): Context
 
-    Context getContext();
+    fun onLoadSuccess(str: String)
 
 }

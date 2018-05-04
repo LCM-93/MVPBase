@@ -1,6 +1,9 @@
 package com.lcm.app
 
 import com.lcm.android.base.BaseApplication
+import com.lcm.app.dagger.component.AppComponent
+import com.lcm.app.dagger.component.DaggerAppComponent
+import com.lcm.app.dagger.module.DataModule
 
 /**
  * ****************************************************************
@@ -11,17 +14,17 @@ import com.lcm.android.base.BaseApplication
  */
 class MyApplication:BaseApplication(){
 
-//    var appComponent:AppComponent?=null
-//        private set
-//
-//    override fun onCreate() {
-//        super.onCreate()
-//        appComponent = DaggerAppComponent.builder()
-//                .appModule(appModule)
-//                .clientModule(clientModule)
-//                .dataModule(DataModule())
-//                .build()
-//    }
+    var appComponent: AppComponent?=null
+        private set
+
+    override fun onCreate() {
+        super.onCreate()
+        appComponent = DaggerAppComponent.builder()
+                .appModule(appModule)
+                .clientModule(clientModule)
+                .dataModule(DataModule())
+                .build()
+    }
 
 
 }

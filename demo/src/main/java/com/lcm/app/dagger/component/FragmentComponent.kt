@@ -1,8 +1,8 @@
-package com.lcm.app.dagger.component;
+package com.lcm.app.dagger.component
 
-import com.lcm.android.dagger.scope.FragmentScope;
+import com.lcm.android.dagger.scope.FragmentScope
 
-import dagger.Component;
+import dagger.Component
 
 /**
  * ****************************************************************
@@ -12,7 +12,5 @@ import dagger.Component;
  * *****************************************************************
  */
 @FragmentScope
-@Component(dependencies = AppComponent.class)
-public interface FragmentComponent {
-
-}
+@Component(dependencies = arrayOf(AppComponent::class))
+interface FragmentComponent
