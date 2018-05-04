@@ -25,14 +25,14 @@ import io.rx_cache2.EvictProvider
 class MainModel @Inject
 constructor(dataManager: DataManager) : BaseModel<DataManager>(dataManager) {
 
-    fun splah(): Observable<HttpBaseResult<List<WelfareBean>>>{
-        return mDataManager.commonApi.splash
+    fun splash(): Observable<HttpBaseResult<ArrayList<WelfareBean>>>{
+        return mDataManager.commonApi.getSplash()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun load(): Observable<HttpBaseResult<List<String>>> {
-        return mDataManager.commonCache.getHistoryDateList(mDataManager.commonApi.historyDateList, EvictProvider(NetworkUtils.isConnected()))
+    fun load(): Observable<HttpBaseResult<ArrayList<String>>> {
+        return mDataManager.commonCache.getHistoryDateList(mDataManager.commonApi.getHistoryDateList(), EvictProvider(NetworkUtils.isConnected()))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { httpBaseResultReply ->

@@ -8,8 +8,6 @@ import com.lcm.app.data.entity.HttpBaseResult
 
 import javax.inject.Inject
 
-
-
 /**
  * ****************************************************************
  * Author: LCM
@@ -29,8 +27,8 @@ constructor() : BaseMvpPresenter<MainView>() {
 
     fun load() {
         mainModel!!.load()
-                .subscribe(object : ProgressObserver<HttpBaseResult<List<String>>>(mvpView.getContext()) {
-                    override fun onNext(listHttpBaseResult: HttpBaseResult<List<String>>) {
+                .subscribe(object : ProgressObserver<HttpBaseResult<ArrayList<String>>>(mvpView.getContext()) {
+                    override fun onNext(listHttpBaseResult: HttpBaseResult<ArrayList<String>>) {
                         super.onNext(listHttpBaseResult)
                         mvpView.onLoadSuccess(listHttpBaseResult.results.toString())
                     }
@@ -39,13 +37,11 @@ constructor() : BaseMvpPresenter<MainView>() {
 
 
     fun getSplash() {
-        mainModel!!.splah()
+        mainModel!!.splash()
                 .subscribe { listHttpBaseResult ->
                     val results = listHttpBaseResult.results
                     mvpView.onLoadSuccess("网络下载数据：：" + results.toString())
-                    for (w in results) {
                         //                            dbManager.getWelfareBeanDao().insert(w);
-                    }
                 }
     }
 
