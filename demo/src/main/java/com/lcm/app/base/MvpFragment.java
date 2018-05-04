@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.lcm.android.mvp.BaseMvpFragment;
-import com.lcm.android.mvp.BaseMvpPresenter;
 import com.lcm.android.mvp.BaseView;
 import com.lcm.app.MyApplicationJ;
 import com.lcm.app.dagger.component.AppComponent;
