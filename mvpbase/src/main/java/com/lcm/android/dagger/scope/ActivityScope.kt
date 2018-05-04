@@ -1,9 +1,9 @@
-package com.lcm.android.dagger.scope;
+package com.lcm.android.dagger.scope
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
 
-import javax.inject.Scope;
+import javax.inject.Scope
 
 /**
  * ****************************************************************
@@ -14,5 +14,4 @@ import javax.inject.Scope;
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActivityScope {
-}
+annotation class ActivityScope

@@ -20,8 +20,8 @@ class MyApplication:BaseApplication(){
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
-                .appModule(appModule)
-                .clientModule(clientModule)
+                .appModule(mAppModule)
+                .clientModule(mClientModule)
                 .dataModule(DataModule())
                 .build()
     }
