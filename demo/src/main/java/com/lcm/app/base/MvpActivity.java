@@ -19,7 +19,7 @@ import com.lcm.app.dagger.component.AppComponent;
  * *****************************************************************
  */
 
-public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpActivity<P> implements BaseView{
+public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpActivity<P> implements BaseView {
 
     protected MyApplication application;
     @Override

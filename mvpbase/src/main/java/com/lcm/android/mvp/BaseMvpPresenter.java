@@ -10,7 +10,7 @@ package com.lcm.android.mvp;
  * *****************************************************************
  */
 
-public class BaseMvpPresenter<V extends BaseView> implements BasePresenter<V>{
+public class BaseMvpPresenter<V extends BaseView> implements BasePresenter<V> {
     private V mMvpView;
 
     @Override
