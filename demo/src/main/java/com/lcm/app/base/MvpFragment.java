@@ -8,7 +8,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lcm.android.mvp.BaseMvpFragment;
 import com.lcm.android.mvp.BaseMvpPresenter;
 import com.lcm.android.mvp.BaseView;
-import com.lcm.app.MyApplication;
+import com.lcm.app.MyApplicationJ;
 import com.lcm.app.dagger.component.AppComponent;
 
 /**
@@ -20,7 +20,7 @@ import com.lcm.app.dagger.component.AppComponent;
  */
 
 public abstract class MvpFragment<P extends BaseMvpPresenter> extends BaseMvpFragment<P> implements BaseView {
-    protected MyApplication application;
+    protected MyApplicationJ application;
     @Override
     public Context getActivityContext() {
         return getActivity();
@@ -49,7 +49,7 @@ public abstract class MvpFragment<P extends BaseMvpPresenter> extends BaseMvpFra
 
     @Override
     protected void ComponentInject() {
-        application = (MyApplication) getActivity().getApplication();
+        application = (MyApplicationJ) getActivity().getApplication();
         setupActivityComponent(application.getAppComponent());
     }
 

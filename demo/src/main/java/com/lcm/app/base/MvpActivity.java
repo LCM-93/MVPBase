@@ -8,7 +8,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lcm.android.mvp.BaseMvpActivity;
 import com.lcm.android.mvp.BaseMvpPresenter;
 import com.lcm.android.mvp.BaseView;
-import com.lcm.app.MyApplication;
+import com.lcm.app.MyApplicationJ;
 import com.lcm.app.dagger.component.AppComponent;
 
 /**
@@ -21,7 +21,7 @@ import com.lcm.app.dagger.component.AppComponent;
 
 public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpActivity<P> implements BaseView {
 
-    protected MyApplication application;
+    protected MyApplicationJ application;
     @Override
     public void showMessage(String str) {
         ToastUtils.showShort(str);
@@ -46,7 +46,7 @@ public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpAc
     }
     @Override
     protected void ComponentInject() {
-        application = (MyApplication) getApplication();
+        application = (MyApplicationJ) getApplication();
         setupActivityComponent(application.getAppComponent());
     }
 

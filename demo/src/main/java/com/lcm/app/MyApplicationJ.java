@@ -15,8 +15,8 @@ import com.lcm.app.data.http.MyHttpHandler;
  * *****************************************************************
  */
 
-public class MyApplication extends BaseApplication{
-    private static AppComponent mAppComponent;
+public class MyApplicationJ extends BaseApplication{
+    private  AppComponent mAppComponent;
 
     @Override
     public void onCreate() {
