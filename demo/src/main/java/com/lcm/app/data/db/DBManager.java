@@ -1,18 +1,15 @@
 package com.lcm.app.data.db;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.greedao.dao.DaoMaster;
-import com.greedao.dao.DaoSession;
-import com.greedao.dao.WelfareBeanDao;
-import com.lcm.app.BuildConfig;
+import com.lcm.app.data.entity.db.Dog;
 
-import org.greenrobot.greendao.database.Database;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * ****************************************************************
@@ -23,37 +20,37 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class DBManager {
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    private final String DBName = BuildConfig.DB_Name;
-    private DaoMaster.DevOpenHelper devOpenHelper;
-    private Database db;
-    private Context context;
-    private WelfareBeanDao welfareBeanDao;
+
+    private Realm realm = null;
 
     @Inject
-    public DBManager(Context context) {
-        this.context = context;
+    public DBManager() {
     }
 
-    private void setDatabase() {
-        devOpenHelper = new DaoMaster.DevOpenHelper(context, DBName, null);
-        db = devOpenHelper.getWritableDb();
-        mDaoMaster = new DaoMaster(db);
-        mDaoSession = mDaoMaster.newSession();
+
+    public void addDog(Dog dog){
+        if(realm == null) realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.copyToRealm(dog);
+        realm.commitTransaction();
+        close();
     }
 
-    private DaoSession getDaoSession() {
-        if (mDaoSession == null) {
-            setDatabase();
+
+    public List<Dog> findAllDog(){
+        if(realm == null) realm = Realm.getDefaultInstance();
+        RealmResults<Dog> all = realm.where(Dog.class).findAll();
+        List<Dog> res = realm.copyFromRealm(all);
+        close();
+        return res;
+    }
+
+
+    private void close(){
+        if(realm != null){
+            realm.close();
+            realm = null;
         }
-        return mDaoSession;
     }
 
-    public WelfareBeanDao getWelfareBeanDao() {
-        if (welfareBeanDao == null) {
-            welfareBeanDao = getDaoSession().getWelfareBeanDao();
-        }
-        return welfareBeanDao;
-    }
 }

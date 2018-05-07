@@ -1,6 +1,5 @@
 package com.lcm.app.dagger.module;
 
-import android.app.Application;
 
 import com.lcm.app.data.api.CommonApi;
 import com.lcm.app.data.api.CommonCache;
@@ -38,7 +37,7 @@ public class DataModule {
 
     @Singleton
     @Provides
-    DBManager provideDBManager(Application application){
-        return new DBManager(application);
+    DBManager provideDBManager(){
+        return new DBManager();
     }
 }

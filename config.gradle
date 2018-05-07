@@ -17,7 +17,7 @@ ext {
             rxlifecycleSdkVersion   : "1.0",
             rxlifecycle2SdkVersion  : "2.2.1",
             espressoSdkVersion      : "2.2.2",
-            canarySdkVersion        : "1.5",
+            canarySdkVersion        : "1.5.4",
             rx2androidVersion       : "2.0.2",
             rx2javaVersion          : "2.1.12"
     ]

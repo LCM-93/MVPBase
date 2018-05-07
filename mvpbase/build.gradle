@@ -132,6 +132,5 @@ dependencies {
     api (rootProject.ext.dependencies["rxbinding"]){
         exclude module: 'support-annotations'
     }
-    api rootProject.ext.dependencies["greendao"]
 
 }

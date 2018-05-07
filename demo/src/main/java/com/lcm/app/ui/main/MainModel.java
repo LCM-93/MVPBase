@@ -1,12 +1,10 @@
-package com.lcm.app.main;
+package com.lcm.app.ui.main;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.lcm.android.mvp.BaseModel;
-import com.lcm.app.data.api.ApiManager;
-import com.lcm.app.data.api.CacheManager;
 import com.lcm.app.data.api.DataManager;
-import com.lcm.app.data.db.DBManager;
 import com.lcm.app.data.entity.HttpBaseResult;
 import com.lcm.app.data.entity.WelfareBean;
 
@@ -17,7 +15,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import io.rx_cache2.EvictDynamicKey;
 import io.rx_cache2.EvictProvider;
 
 /**
@@ -40,12 +37,13 @@ public class MainModel extends BaseModel<DataManager> {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(httpBaseResultReply -> {
-                    LogUtils.e(httpBaseResultReply.getSource());
+                    ToastUtils.showShort("数据来源：："+httpBaseResultReply.getSource());
+                    LogUtils.e("数据来源：："+httpBaseResultReply.getSource());
                     return httpBaseResultReply.getData();
                 });
     }
 
-    public Observable<HttpBaseResult<List<WelfareBean>>>  getSplah(){
+    public Observable<HttpBaseResult<List<WelfareBean>>>  getSplash(){
         return mDataManager.getCommonApi().getSplash()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());

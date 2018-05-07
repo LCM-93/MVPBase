@@ -1,8 +1,5 @@
 package com.lcm.app.data.entity;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * ****************************************************************
@@ -11,7 +8,6 @@ import org.greenrobot.greendao.annotation.Generated;
  * Desc:
  * *****************************************************************
  */
-@Entity
 public class WelfareBean {
 
     /**
@@ -26,7 +22,6 @@ public class WelfareBean {
      * who : daimajia
      */
 
-    @Id
     private String _id;
     private String createdAt;
     private String desc;
@@ -37,7 +32,6 @@ public class WelfareBean {
     private boolean used;
     private String who;
 
-    @Generated(hash = 347923386)
     public WelfareBean(String _id, String createdAt, String desc,
             String publishedAt, String source, String type, String url,
             boolean used, String who) {
@@ -52,7 +46,6 @@ public class WelfareBean {
         this.who = who;
     }
 
-    @Generated(hash = 1818066863)
     public WelfareBean() {
     }
 
