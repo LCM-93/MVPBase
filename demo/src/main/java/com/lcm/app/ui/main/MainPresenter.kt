@@ -5,6 +5,8 @@ import com.lcm.android.mvp.BaseMvpPresenter
 import com.lcm.app.data.db.DBManager
 import com.lcm.app.weight.ProgressObserver
 import com.lcm.app.data.entity.HttpBaseResult
+import com.lcm.app.data.entity.db.Dog
+import java.util.*
 
 import javax.inject.Inject
 
@@ -41,14 +43,21 @@ constructor() : BaseMvpPresenter<MainView>() {
                 .subscribe { listHttpBaseResult ->
                     val results = listHttpBaseResult.results
                     mvpView?.onLoadSuccess("网络下载数据：：" + results.toString())
-                        //                            dbManager.getWelfareBeanDao().insert(w);
+                    //                            dbManager.getWelfareBeanDao().insert(w);
                 }
     }
 
 
     fun readDb() {
-        //        Query<WelfareBean> build = dbManager.getWelfareBeanDao().queryBuilder().build();
-        //        List<WelfareBean> list = build.list();
-        //        getMvpView().onLoadSuccess("从数据库中读取：："+list.toString());
+        var findAllDog = dbManager.findAllDog()
+        mvpView?.onLoadSuccess(findAllDog.toString())
+    }
+
+    fun inputDb() {
+        val i = Random().nextInt(100)
+        val dog = Dog()
+        dog.name = "dog_$i"
+        dog.age = i
+        dbManager.addDog(dog)
     }
 }

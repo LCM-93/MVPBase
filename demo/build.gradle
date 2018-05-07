@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'realm-android'
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     useLibrary 'org.apache.http.legacy'
@@ -15,10 +17,8 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
-
-
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -39,11 +39,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-//    greendao {
-//        schemaVersion 1 //数据库的schema版本，也可以理解为数据库版本号
-//        daoPackage 'com.greedao.dao' //设置DaoMaster、DaoSession、Dao包名，也就是要放置这些类的包的全路径。
-//        targetGenDir 'src/main/java' //设置DaoMaster、DaoSession、Dao目录
-//    }
 }
 
 kapt {

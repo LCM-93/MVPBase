@@ -25,8 +25,10 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
     lateinit var btn: Button
     @BindView(R.id.btn2)
     lateinit var btn2: Button
-    @BindView(R.id.btn3)
-    lateinit var btn3: Button
+    @BindView(R.id.btn3_1)
+    lateinit var btn3_read: Button
+    @BindView(R.id.btn3_2)
+    lateinit var btn3_input: Button
     @BindView(R.id.btn4)
     lateinit var btn4: Button
 
@@ -44,8 +46,13 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
         RxView.clicks(btn2)
                 .subscribe { mPresenter.getSplash() }
 
-        RxView.clicks(btn3)
+        RxView.clicks(btn3_read)
                 .subscribe { mPresenter.readDb() }
+
+        RxView.clicks(btn3_input)
+                .subscribe { mPresenter.inputDb() }
+
+
 
         RxView.clicks(btn4)
                 .subscribe { ARouter.getInstance().build(RouterConfig.SPLASH).navigation() }

@@ -115,8 +115,8 @@ class ClientModule {
                 .addInterceptor(HttpLoggingInterceptor().setLevel(if(BuildConfig.DEBUG)HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
 
         if (mInterceptors != null && mInterceptors?.size!!>0){
-            for (interceptor in mInterceptors!!){
-                builder.addInterceptor(interceptor)
+            for (inter in mInterceptors!!){
+                builder.addInterceptor(inter)
             }
         }
 

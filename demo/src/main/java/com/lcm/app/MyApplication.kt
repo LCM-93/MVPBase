@@ -5,6 +5,8 @@ import com.lcm.android.base.BaseApplication
 import com.lcm.app.dagger.component.AppComponent
 import com.lcm.app.dagger.component.DaggerAppComponent
 import com.lcm.app.dagger.module.DataModule
+import io.realm.Realm
+import io.realm.RealmConfiguration
 
 /**
  * ****************************************************************
@@ -30,7 +32,13 @@ class MyApplication:BaseApplication(){
         ARouter.openDebug()
         ARouter.openLog()
         ARouter.init(this)
+
+        Realm.init(this)
+        Realm.setDefaultConfiguration(RealmConfiguration.Builder().name(BuildConfig.DB_Name).build())
+
+//        LeakCanary.install(this)
     }
+
 
 
 }

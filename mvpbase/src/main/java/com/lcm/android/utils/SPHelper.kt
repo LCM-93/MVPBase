@@ -127,7 +127,7 @@ object SPHelper {
     @JvmStatic
     fun getCacheFile(context: Context): File {
         if (context.cacheDir == null || Environment.getExternalStorageState() == null || Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            var file: File? =null
+            var file: File?
             file = context.externalCacheDir
             if (file == null){
                 file = File(getCacheFilePath(context))

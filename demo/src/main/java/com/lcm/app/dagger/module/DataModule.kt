@@ -38,7 +38,7 @@ class DataModule {
 
     @Singleton
     @Provides
-    internal fun provideDBManager(application: Application): DBManager {
-        return DBManager(application)
+    internal fun provideDBManager(): DBManager {
+        return DBManager()
     }
 }
