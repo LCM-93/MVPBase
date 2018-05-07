@@ -35,13 +35,13 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
         mPresenter.onAttachView(this)
         RxView.clicks(btn)
                 .throttleFirst(2, TimeUnit.SECONDS)
-                .subscribe { o -> mPresenter.load() }
+                .subscribe { _ -> mPresenter.load() }
 
         RxView.clicks(btn2)
-                .subscribe { o -> mPresenter.getSplash() }
+                .subscribe { _ -> mPresenter.getSplash() }
 
         RxView.clicks(btn3)
-                .subscribe { o -> mPresenter.readDb() }
+                .subscribe { _ -> mPresenter.readDb() }
     }
 
     override fun initData() {

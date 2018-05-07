@@ -16,66 +16,73 @@ import java.io.*
 object SPHelper {
 
     const val SP_NAME: String = "SP_CONFIG"
-    var mSharedPreferences: SharedPreferences? = null
+    private var mSharedPreferences: SharedPreferences? = null
 
-    @JvmStatic fun setStringSF(context: Context, key: String, value: String): Unit {
+    @JvmStatic
+    fun setStringSF(context: Context, key: String, value: String): Unit {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        mSharedPreferences?.edit()?.putString(key, value)?.commit()
+        mSharedPreferences!!.edit().putString(key, value).commit()
     }
 
-    @JvmStatic fun getStringSF(context: Context, key: String): String? {
+    @JvmStatic
+    fun getStringSF(context: Context, key: String): String? {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        return mSharedPreferences?.getString(key, null)
+        return mSharedPreferences!!.getString(key, null)
     }
 
-    @JvmStatic fun setIntergerSF(context: Context, key: String, value: Int): Unit {
+    @JvmStatic
+    fun setIntergerSF(context: Context, key: String, value: Int): Unit {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        mSharedPreferences?.edit()?.putInt(key, value)?.commit()
+        mSharedPreferences!!.edit().putInt(key, value).commit()
     }
 
-    @JvmStatic fun getIntergerSF(context: Context, key: String): Int? {
+    @JvmStatic
+    fun getIntergerSF(context: Context, key: String): Int? {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        return mSharedPreferences?.getInt(key, -1)
+        return mSharedPreferences!!.getInt(key, -1)
     }
 
-    @JvmStatic fun removeSF(context: Context, key: String): Unit {
+    @JvmStatic
+    fun removeSF(context: Context, key: String): Unit {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        mSharedPreferences?.edit()?.remove(key)?.commit()
+        mSharedPreferences!!.edit().remove(key).commit()
     }
 
-    @JvmStatic fun clearShareprefrence(context: Context): Unit {
+    @JvmStatic
+    fun clearShareprefrence(context: Context): Unit {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
-        mSharedPreferences?.edit()?.clear()?.commit()
+        mSharedPreferences!!.edit().clear().commit()
     }
 
 
     /**
      * 将对象存储到sharepreference
      */
-    @JvmStatic fun <T> saveDeviceData(context: Context,key: String,device:T): Boolean{
+    @JvmStatic
+    fun <T> saveDeviceData(context: Context, key: String, device: T): Boolean {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         }
         var baos = ByteArrayOutputStream()
         try {
-            var oos:ObjectOutputStream = ObjectOutputStream(baos)
+            var oos: ObjectOutputStream = ObjectOutputStream(baos)
             oos.writeObject(device)
-            var oAuth_Base64:String = String(Base64.encode(baos.toByteArray(),Base64.DEFAULT))
-            mSharedPreferences?.edit()?.putString(key,oAuth_Base64)?.commit()
+            var oAuth_Base64: String = String(Base64.encode(baos.toByteArray(), Base64.DEFAULT))
+            mSharedPreferences!!.edit().putString(key, oAuth_Base64).commit()
             return true
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
             return false
         }
@@ -84,51 +91,55 @@ object SPHelper {
     /**
      * 将对象从sharepreference中取出来
      */
-//    @JvmStatic fun <T> getDeviceData(context: Context,key: String):T?{
-//        if (mSharedPreferences == null) {
-//            mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
-//        }
-//        var device: T?=null
-//        var productBase64:String? = mSharedPreferences?.getString(key,null)
-//        if(productBase64 == null) return null
-//
-//        var base64 = Base64.decode(productBase64.toByteArray(),Base64.DEFAULT)
-//        var bais = ByteArrayInputStream(base64)
-//        try {
-//            var bis = ObjectInputStream(bais)
-//            device = bis.readObject() as T?
-//        }catch (e: Exception){
-//            e.printStackTrace()
-//        }
-//        return device
-//    }
+    @JvmStatic
+    fun <T> getDeviceData(context: Context, key: String): T? {
+        if (mSharedPreferences == null) {
+            mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
+        }
+        var device: T? = null
+        var productBase64 = mSharedPreferences!!.getString(key, null) ?: return null
+
+        var base64 = Base64.decode(productBase64.toByteArray(), Base64.DEFAULT)
+        var bais = ByteArrayInputStream(base64)
+        try {
+            var bis = ObjectInputStream(bais)
+            device = bis.readObject() as T
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return device
+    }
 
 
     /**
      * 返回缓存文件夹
      */
-    @JvmStatic fun getCacheFilePath(context: Context):String{
+    @JvmStatic
+    fun getCacheFilePath(context: Context): String {
         var packageName: String = context.packageName
-        return Environment.getExternalStorageDirectory().path+packageName
+        return "/mnt/sdcard/$packageName"
     }
 
 
     /**
      * 获取自定义缓存文件地址
      */
-    @JvmStatic fun getCacheFile(context: Context):File{
-        if (context.cacheDir==null || Environment.getExternalStorageState() == null||Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-            var file:File = context.externalCacheDir
-//            if (file == null){
-//                file = File(getCacheFilePath(context))
-//            }
+    @JvmStatic
+    fun getCacheFile(context: Context): File {
+        if (context.cacheDir == null || Environment.getExternalStorageState() == null || Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            var file: File? =null
+            file = context.externalCacheDir
+            if (file == null){
+                file = File(getCacheFilePath(context))
+                if(!file.exists()){
+                    file.mkdirs()
+                }
+            }
             return file
-        }else{
+        } else {
             return context.cacheDir
         }
     }
-
-
 
 
 }

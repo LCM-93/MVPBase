@@ -26,7 +26,7 @@ constructor() : BaseMvpPresenter<MainView>() {
     lateinit var dbManager: DBManager
 
     fun load() {
-        mainModel!!.load()
+        mainModel.load()
                 .subscribe(object : ProgressObserver<HttpBaseResult<ArrayList<String>>>(mvpView?.getContext()!!) {
                     override fun onNext(listHttpBaseResult: HttpBaseResult<ArrayList<String>>) {
                         super.onNext(listHttpBaseResult)
@@ -37,7 +37,7 @@ constructor() : BaseMvpPresenter<MainView>() {
 
 
     fun getSplash() {
-        mainModel!!.splash()
+        mainModel.splash()
                 .subscribe { listHttpBaseResult ->
                     val results = listHttpBaseResult.results
                     mvpView?.onLoadSuccess("网络下载数据：：" + results.toString())
