@@ -1,6 +1,6 @@
-package com.lcm.android.mvp;
+package com.lcm.android.mvp
 
-import android.support.annotation.UiThread;
+import android.support.annotation.UiThread
 
 /**
  * ****************************************************************
@@ -10,12 +10,12 @@ import android.support.annotation.UiThread;
  * *****************************************************************
  */
 
-public interface BasePresenter<V extends BaseView> {
+interface BasePresenter<V : BaseView> {
 
     @UiThread
-    void onAttachView(V view);
+    fun onAttachView(view: V)
 
     @UiThread
-    void onDetachView();
+    fun onDetachView()
 
 }

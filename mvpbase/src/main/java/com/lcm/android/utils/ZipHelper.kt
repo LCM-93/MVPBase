@@ -20,9 +20,9 @@ object ZipHelper {
      * zlib decompress 2 String
      */
     @JvmStatic
-    fun decompressToStringForZlib(bytesToDecompress: ByteArray): String? {
+    fun decompressToStringForZlib(bytesToDecompress: ByteArray): String {
         var bytesDecompressed = decompressForZlib(bytesToDecompress)
-        var returnValue: String? = null
+        var returnValue: String = ""
         try {
             if (bytesDecompressed == null) return returnValue
             returnValue = String(bytesDecompressed, 0, bytesDecompressed.size, Charset.forName("UTF-8"))
@@ -126,7 +126,7 @@ object ZipHelper {
      * gzip decompress 2 string
      */
     @JvmStatic
-    fun decompressForGzip(compressed:ByteArray):String?{
+    fun decompressForGzip(compressed:ByteArray):String{
         val BUFFER_SIZE = compressed.size
         var gis:GZIPInputStream? = null
         var bis:ByteArrayInputStream? =null
@@ -151,7 +151,7 @@ object ZipHelper {
             okhttp3.internal.Util.closeQuietly(gis)
             okhttp3.internal.Util.closeQuietly(bis)
         }
-        return null
+        return ""
     }
 
 

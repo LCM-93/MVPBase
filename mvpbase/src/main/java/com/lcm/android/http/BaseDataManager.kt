@@ -1,15 +1,11 @@
-package com.lcm.android.mvp;
-
+package com.lcm.android.http
 
 /**
  * ****************************************************************
  * Author: LCM
- * Date: 2017/5/22 下午12:01
+ * Date: 2018/5/7 09:17
  * Desc:
  * *****************************************************************
  */
-
-public interface BaseView {
-
-    void finishView();
+abstract class BaseDataManager {
 }

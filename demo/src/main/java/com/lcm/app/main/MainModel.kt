@@ -26,13 +26,13 @@ class MainModel @Inject
 constructor(dataManager: DataManager) : BaseModel<DataManager>(dataManager) {
 
     fun splash(): Observable<HttpBaseResult<ArrayList<WelfareBean>>>{
-        return mDataManager.commonApi.getSplash()
+        return mDataManager?.commonApi?.getSplash()!!
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun load(): Observable<HttpBaseResult<ArrayList<String>>> {
-        return mDataManager.commonCache.getHistoryDateList(mDataManager.commonApi.getHistoryDateList(), EvictProvider(NetworkUtils.isConnected()))
+        return mDataManager?.commonCache?.getHistoryDateList(mDataManager?.commonApi?.getHistoryDateList()!!, EvictProvider(NetworkUtils.isConnected()))!!
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { httpBaseResultReply ->
@@ -40,4 +40,5 @@ constructor(dataManager: DataManager) : BaseModel<DataManager>(dataManager) {
                     httpBaseResultReply.data
                 }
     }
+
 }

@@ -33,14 +33,14 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
 
     override fun initView() {
         mPresenter.onAttachView(this)
-        RxView.clicks(btn!!)
+        RxView.clicks(btn)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe { o -> mPresenter.load() }
 
-        RxView.clicks(btn2!!)
+        RxView.clicks(btn2)
                 .subscribe { o -> mPresenter.getSplash() }
 
-        RxView.clicks(btn3!!)
+        RxView.clicks(btn3)
                 .subscribe { o -> mPresenter.readDb() }
     }
 
@@ -50,7 +50,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
 
 
     override fun onLoadSuccess(str: String) {
-        tv!!.text = str
+        tv.text = str
     }
 
     override fun getContext(): Context {

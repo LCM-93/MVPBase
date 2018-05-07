@@ -27,10 +27,10 @@ constructor() : BaseMvpPresenter<MainView>() {
 
     fun load() {
         mainModel!!.load()
-                .subscribe(object : ProgressObserver<HttpBaseResult<ArrayList<String>>>(mvpView.getContext()) {
+                .subscribe(object : ProgressObserver<HttpBaseResult<ArrayList<String>>>(mvpView?.getContext()!!) {
                     override fun onNext(listHttpBaseResult: HttpBaseResult<ArrayList<String>>) {
                         super.onNext(listHttpBaseResult)
-                        mvpView.onLoadSuccess(listHttpBaseResult.results.toString())
+                        mvpView?.onLoadSuccess(listHttpBaseResult.results.toString())
                     }
                 })
     }
@@ -40,7 +40,7 @@ constructor() : BaseMvpPresenter<MainView>() {
         mainModel!!.splash()
                 .subscribe { listHttpBaseResult ->
                     val results = listHttpBaseResult.results
-                    mvpView.onLoadSuccess("网络下载数据：：" + results.toString())
+                    mvpView?.onLoadSuccess("网络下载数据：：" + results.toString())
                         //                            dbManager.getWelfareBeanDao().insert(w);
                 }
     }
