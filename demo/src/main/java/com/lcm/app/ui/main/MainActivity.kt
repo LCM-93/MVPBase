@@ -44,7 +44,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
                 .subscribe { mPresenter.load() }
 
         RxView.clicks(btn2)
-                .subscribe { mPresenter.getSplash() }
+                .subscribe { mPresenter.loadWithCache() }
 
         RxView.clicks(btn3_read)
                 .subscribe { mPresenter.readDb() }

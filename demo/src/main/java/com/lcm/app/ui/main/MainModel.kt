@@ -2,6 +2,7 @@ package com.lcm.app.ui.main
 
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.NetworkUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.lcm.android.mvp.BaseModel
 import com.lcm.app.data.api.DataManager
 import com.lcm.app.data.entity.HttpBaseResult
@@ -25,18 +26,20 @@ import io.rx_cache2.EvictProvider
 class MainModel @Inject
 constructor(dataManager: DataManager) : BaseModel<DataManager>(dataManager) {
 
-    fun splash(): Observable<HttpBaseResult<ArrayList<WelfareBean>>>{
-        return mDataManager?.commonApi?.getSplash()!!
+    fun splash(): Observable<HttpBaseResult<ArrayList<WelfareBean>>> {
+        return mDataManager!!.commonApi.getSplash()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun load(): Observable<HttpBaseResult<ArrayList<String>>> {
-        return mDataManager?.commonCache?.getHistoryDateList(mDataManager?.commonApi?.getHistoryDateList()!!, EvictProvider(NetworkUtils.isConnected()))!!
+        return mDataManager!!.commonCache.getHistoryDateList(mDataManager!!.commonApi.getHistoryDateList())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { httpBaseResultReply ->
-                    LogUtils.e(httpBaseResultReply.source)
+                    var source = httpBaseResultReply.source
+                    LogUtils.e("数据来源：：$source")
+                    ToastUtils.showShort("数据来源：：$source")
                     httpBaseResultReply.data
                 }
     }

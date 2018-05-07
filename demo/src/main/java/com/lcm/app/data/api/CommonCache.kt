@@ -20,7 +20,7 @@ import io.rx_cache2.Reply
 
 interface CommonCache {
 
-    @LifeCache(duration = 5, timeUnit = TimeUnit.MINUTES)
-    fun getHistoryDateList(oRepos: Observable<HttpBaseResult<ArrayList<String>>>, evictProvider: EvictProvider): Observable<Reply<HttpBaseResult<ArrayList<String>>>>
+    @LifeCache(duration = 20, timeUnit = TimeUnit.SECONDS)
+    fun getHistoryDateList(oRepos: Observable<HttpBaseResult<ArrayList<String>>>): Observable<Reply<HttpBaseResult<ArrayList<String>>>>
 
 }

@@ -28,6 +28,15 @@ constructor() : BaseMvpPresenter<MainView>() {
     lateinit var dbManager: DBManager
 
     fun load() {
+        mainModel.splash()
+                .subscribe { listHttpBaseResult ->
+                    val results = listHttpBaseResult.results
+                    mvpView?.onLoadSuccess(results.toString())
+                }
+
+    }
+
+    fun loadWithCache() {
         mainModel.load()
                 .subscribe(object : ProgressObserver<HttpBaseResult<ArrayList<String>>>(mvpView?.getContext()!!) {
                     override fun onNext(listHttpBaseResult: HttpBaseResult<ArrayList<String>>) {
@@ -35,16 +44,6 @@ constructor() : BaseMvpPresenter<MainView>() {
                         mvpView?.onLoadSuccess(listHttpBaseResult.results.toString())
                     }
                 })
-    }
-
-
-    fun getSplash() {
-        mainModel.splash()
-                .subscribe { listHttpBaseResult ->
-                    val results = listHttpBaseResult.results
-                    mvpView?.onLoadSuccess("网络下载数据：：" + results.toString())
-                    //                            dbManager.getWelfareBeanDao().insert(w);
-                }
     }
 
 
