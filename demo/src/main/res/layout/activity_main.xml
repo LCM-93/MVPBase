@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lcm.app.main.MainActivity">
+    tools:context="com.lcm.app.ui.main.MainActivity">
 
 
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="基础网络请求"/>
     <Button
         android:id="@+id/btn2"
         android:layout_width="match_parent"
@@ -21,6 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="读数据库"/>
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ARouter尝试"/>
+
 
     <TextView
         android:id="@+id/tv"

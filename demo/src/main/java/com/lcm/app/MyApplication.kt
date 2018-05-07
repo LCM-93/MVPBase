@@ -1,5 +1,6 @@
 package com.lcm.app
 
+import com.alibaba.android.arouter.launcher.ARouter
 import com.lcm.android.base.BaseApplication
 import com.lcm.app.dagger.component.AppComponent
 import com.lcm.app.dagger.component.DaggerAppComponent
@@ -24,6 +25,11 @@ class MyApplication:BaseApplication(){
                 .clientModule(mClientModule)
                 .dataModule(DataModule())
                 .build()
+
+
+        ARouter.openDebug()
+        ARouter.openLog()
+        ARouter.init(this)
     }
 
 

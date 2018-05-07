@@ -1,4 +1,4 @@
-package com.lcm.app.main
+package com.lcm.app.ui.main
 
 import android.content.Context
 import android.widget.Button
@@ -13,6 +13,8 @@ import com.lcm.app.dagger.component.DaggerActivityComponent
 import java.util.concurrent.TimeUnit
 
 import butterknife.BindView
+import com.alibaba.android.arouter.launcher.ARouter
+import com.lcm.app.RouterConfig
 
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
@@ -25,6 +27,8 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
     lateinit var btn2: Button
     @BindView(R.id.btn3)
     lateinit var btn3: Button
+    @BindView(R.id.btn4)
+    lateinit var btn4: Button
 
 
     override fun rootView(): Int {
@@ -35,13 +39,16 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainView {
         mPresenter.onAttachView(this)
         RxView.clicks(btn)
                 .throttleFirst(2, TimeUnit.SECONDS)
-                .subscribe { _ -> mPresenter.load() }
+                .subscribe { mPresenter.load() }
 
         RxView.clicks(btn2)
-                .subscribe { _ -> mPresenter.getSplash() }
+                .subscribe { mPresenter.getSplash() }
 
         RxView.clicks(btn3)
-                .subscribe { _ -> mPresenter.readDb() }
+                .subscribe { mPresenter.readDb() }
+
+        RxView.clicks(btn4)
+                .subscribe { ARouter.getInstance().build(RouterConfig.SPLASH).navigation() }
     }
 
     override fun initData() {

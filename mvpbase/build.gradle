@@ -20,14 +20,6 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
-        /**
-         * ARouter 必须配置
-         */
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
     }
     buildTypes {
         release {
@@ -47,6 +39,13 @@ android {
 
 kapt {
     generateStubs = true
+
+    /**
+     * kotlin Arouter配置
+     */
+    arguments{
+        arg("moduleName",project.getName())
+    }
 }
 
 
@@ -81,7 +80,7 @@ dependencies {
 
     //Arouter
     api rootProject.ext.dependencies['arouter']
-    annotationProcessor rootProject.ext.dependencies['arouter-compiler']
+    kapt rootProject.ext.dependencies['arouter-compiler']
 
 
     //rx

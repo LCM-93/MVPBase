@@ -16,14 +16,8 @@ android {
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
-        /**
-         * ARouter 必须配置
-         */
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
+
+
     }
     buildTypes {
         release {
@@ -54,6 +48,13 @@ android {
 
 kapt {
     generateStubs = true
+
+    /**
+     * kotlin Arouter配置
+     */
+    arguments{
+        arg("moduleName",project.getName())
+    }
 }
 
 
@@ -72,7 +73,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.12'
     kapt rootProject.ext.dependencies["dagger2-compiler"]
     kapt rootProject.ext.dependencies["butterknife-compiler"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.dependencies["arouter-compiler"]
 
 
     //test

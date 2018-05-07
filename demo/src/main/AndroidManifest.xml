@@ -12,12 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.lcm.app.MyApplication">
-        <activity android:name="com.lcm.app.main.MainActivity">
+        <activity android:name="com.lcm.app.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.SplashActivity">
+
         </activity>
 
 
