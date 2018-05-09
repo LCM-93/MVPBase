@@ -78,7 +78,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                 .inject(this);
     }
 
-    
+
     @Override
     public void onLoadSuccess(String str) {
         tv.setText(str);
