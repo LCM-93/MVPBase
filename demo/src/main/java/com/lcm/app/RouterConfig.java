@@ -7,7 +7,7 @@ package com.lcm.app;
  * Desc:
  * *****************************************************************
  */
-public class RouterConfig {
+public interface RouterConfig {
 
-    public static final String SPLASH = "/activity/splash";
+    String SPLASH = "/activity/splash";
 }

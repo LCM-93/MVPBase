@@ -19,18 +19,9 @@ import com.lcm.app.dagger.component.AppComponent;
  * *****************************************************************
  */
 
-public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpActivity<P> implements BaseView{
+public abstract class MvpActivity<P extends BaseMvpPresenter> extends BaseMvpActivity<P> implements BaseView {
 
     protected MyApplication application;
-    @Override
-    public void showMessage(String str) {
-        ToastUtils.showShort(str);
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
 
     @Override
     public void finishView() {
@@ -43,19 +34,25 @@ public abstract class MvpActivity<P extends BaseMvpPresenter>  extends BaseMvpAc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.onAttachView(this);
+        initDataFinal();
     }
+
     @Override
     protected void ComponentInject() {
         application = (MyApplication) getApplication();
         setupActivityComponent(application.getAppComponent());
     }
 
+    @Override
+    protected void initData() {
+        return;
+    }
 
-
+    //防止mPresenter 未绑定view  获取数据出错
+    protected abstract void initDataFinal();
 
     //提供AppComponent(提供所有的单例对象)给子类，进行Component依赖
     protected abstract void setupActivityComponent(AppComponent appComponent);
-
 
 
     @Override

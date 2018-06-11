@@ -34,12 +34,6 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
 
     @Override
-    public void showEmpty() {
-
-    }
-
-
-    @Override
     protected int rootView() {
         return R.layout.activity_main;
     }
@@ -65,7 +59,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
 
     @Override
-    protected void initData() {
+    protected void initDataFinal() {
 
     }
 

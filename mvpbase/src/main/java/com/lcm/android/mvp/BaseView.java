@@ -10,12 +10,8 @@ import android.content.Context;
  * *****************************************************************
  */
 
-public interface BaseView<T> {
+public interface BaseView {
     Context getActivityContext();
-
-    void showMessage(String str);
-
-    void showEmpty();
 
     void finishView();
 }

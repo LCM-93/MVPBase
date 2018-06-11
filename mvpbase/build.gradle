@@ -133,4 +133,13 @@ dependencies {
         exclude module: 'support-annotations'
     }
 
+    api rootProject.ext.dependencies['saripaar']
+
+    api rootProject.ext.dependencies['rxgallery']
+
+//    api rootProject.ext.dependencies['eventbus']
+
+    api rootProject.ext.dependencies['RxBus']
+
+    api rootProject.ext.dependencies['multidex']
 }

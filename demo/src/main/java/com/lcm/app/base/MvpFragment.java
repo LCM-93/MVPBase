@@ -21,17 +21,11 @@ import com.lcm.app.dagger.component.AppComponent;
 
 public abstract class MvpFragment<P extends BaseMvpPresenter> extends BaseMvpFragment<P> implements BaseView {
     protected MyApplication application;
+
     @Override
     public Context getActivityContext() {
         return getActivity();
     }
-
-    @Override
-    public void showMessage(String str) {
-        ToastUtils.showShort(str);
-    }
-
-
 
     @Override
     public void finishView() {
@@ -43,9 +37,13 @@ public abstract class MvpFragment<P extends BaseMvpPresenter> extends BaseMvpFra
         super.onActivityCreated(savedInstanceState);
         mPresenter.onAttachView(this);
 
+        initDataFinal();
     }
 
-
+    @Override
+    protected void initData() {
+        return;
+    }
 
     @Override
     protected void ComponentInject() {
@@ -53,11 +51,12 @@ public abstract class MvpFragment<P extends BaseMvpPresenter> extends BaseMvpFra
         setupActivityComponent(application.getAppComponent());
     }
 
+    //防止mPresenter 未绑定view  获取数据出错
+    protected abstract void initDataFinal();
+
 
     //提供AppComponent(提供所有的单例对象)给子类，进行Component依赖
     protected abstract void setupActivityComponent(AppComponent appComponent);
-
-
 
 
 }

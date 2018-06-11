@@ -4,7 +4,7 @@ import com.lcm.android.mvp.BaseMvpPresenter;
 import com.lcm.app.data.db.DBManager;
 import com.lcm.app.data.entity.WelfareBean;
 import com.lcm.app.data.entity.db.Dog;
-import com.lcm.app.weight.ProgressObserver;
+import com.lcm.app.plugin.weight.ProgressObserver;
 import com.lcm.app.data.entity.HttpBaseResult;
 
 

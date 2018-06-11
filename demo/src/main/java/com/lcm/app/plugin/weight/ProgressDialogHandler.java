@@ -1,4 +1,4 @@
-package com.lcm.app.weight;
+package com.lcm.app.plugin.weight;
 
 import android.content.Context;
 import android.os.Handler;
