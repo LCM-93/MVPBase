@@ -1,7 +1,7 @@
 package com.lcm.android.base;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.blankj.utilcode.util.Utils;
 import com.lcm.android.BuildConfig;
@@ -21,7 +21,7 @@ import okhttp3.Interceptor;
  * *****************************************************************
  */
 
-public abstract class BaseApplication extends Application {
+public abstract class BaseApplication extends MultiDexApplication {
     private static BaseApplication mApplication;
     public LinkedList<BaseActivity> mActivityList;
     private ClientModule mClientModule;
