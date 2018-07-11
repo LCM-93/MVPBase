@@ -63,9 +63,9 @@ dependencies {
 
 
     //view
-    api (rootProject.ext.dependencies["autolayout"]) {
-        exclude group: 'com.android.support'
-    }
+//    api (rootProject.ext.dependencies["autolayout"]) {
+//        exclude group: 'com.android.support'
+//    }
     api (rootProject.ext.dependencies["butterknife"]){
         exclude module: 'support-annotations'
     }
