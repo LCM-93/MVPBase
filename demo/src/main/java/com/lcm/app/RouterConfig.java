@@ -10,4 +10,6 @@ package com.lcm.app;
 public interface RouterConfig {
 
     String SPLASH = "/activity/splash";
+
+    String NEXT= "/activity/next";
 }

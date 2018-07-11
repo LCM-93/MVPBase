@@ -54,7 +54,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                 .subscribe(o -> mPresenter.readDb());
 
         RxView.clicks(btn5)
-                .subscribe(o -> ARouter.getInstance().build(RouterConfig.SPLASH).navigation());
+                .subscribe(o -> ARouter.getInstance().build(RouterConfig.NEXT).navigation());
     }
 
 
