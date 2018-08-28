@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 
-import com.lcm.android.utils.DensityUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 
@@ -32,8 +32,12 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (ScreenUtils.isPortrait()) {
+            ScreenUtils.adaptScreen4VerticalSlide(this, 375);
+        } else {
+            ScreenUtils.adaptScreen4HorizontalSlide(this, 360);
+        }
         setContentView(rootView());
-        DensityUtils.setCustomDensity(this);
         bind = ButterKnife.bind(this);
         mApplication = (BaseApplication) getApplication();
         mContext = this;
