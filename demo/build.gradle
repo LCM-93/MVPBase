@@ -25,18 +25,37 @@ android {
 
         multiDexEnabled true
     }
+
+    signingConfigs{
+        debug{
+            storeFile file("../demo.jks")
+            storePassword "Test123"
+            keyAlias "test"
+            keyPassword "Test123"
+        }
+        release{
+            storeFile file("../demo.jks")
+            storePassword "Test123"
+            keyAlias "test"
+            keyPassword "Test123"
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
             manifestPlaceholders = [mf_appName: "正式版app"]
             buildConfigField 'String','DB_Name','"lcm_db"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             minifyEnabled false
             manifestPlaceholders = [mf_appName: "测试版app"]
             buildConfigField 'String','DB_Name','"lcm_db"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 

@@ -24,6 +24,12 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-frtti -fexceptions"
+            }
+        }
     }
     buildTypes {
         release {
@@ -35,6 +41,12 @@ android {
             minifyEnabled false
             buildConfigField 'String','BaseUrl','"http://gank.io/api/"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
         }
     }
 

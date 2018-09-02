@@ -1,10 +1,15 @@
 package com.lcm.app.ui.main;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.lcm.android.local.Local;
 import com.lcm.app.R;
 import com.lcm.app.RouterConfig;
 import com.lcm.app.base.MvpActivity;
@@ -60,7 +65,10 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
     @Override
     protected void initDataFinal() {
+        LogUtils.e(getHashCode());
 
+        String wechatParam = Local.wechatParam(getActivityContext());
+        LogUtils.e(wechatParam);
     }
 
 
@@ -76,5 +84,17 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     @Override
     public void onLoadSuccess(String str) {
         tv.setText(str);
+    }
+
+
+    public int getHashCode(){
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            Signature signature = packageInfo.signatures[0];
+            return signature.hashCode();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
